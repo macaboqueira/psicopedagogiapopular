@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ª Psicopedagogia Popular - Granja-CE</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração de fontes e cores do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1e3a8a', // Azul Escuro Principal
+                        'secondary-teal': '#2dd4bf', // Verde-Água de Destaque
+                        'bg-light': '#f8f8f8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos customizados para a fonte Inter e cores */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+        }
+        /* Estilo para garantir que o carrossel ocupe a largura total */
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            /* Largura total: 100% * número de slides */
+            width: 300%; 
+        }
+        .slide {
+            width: 33.333%; /* 100% / 3 slides */
+            flex-shrink: 0;
+        }
+        .card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-bg-light">
+
+    <!-- SECTION: HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-extrabold text-primary-blue">
+                    3ª Psicopedagogia Popular
+                </div>
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-8 text-primary-blue font-medium">
+                    <a href="#galeria" class="hover:text-secondary-teal transition duration-300">Galeria</a>
+                    <a href="#detalhes" class="hover:text-secondary-teal transition duration-300">Detalhes</a>
+                    <a href="#programacao" class="hover:text-secondary-teal transition duration-300">Programação</a>
+                    <a href="#equipe" class="hover:text-secondary-teal transition duration-300">Equipe</a>
+                    <a href="#apoio" class="hover:text-secondary-teal transition duration-300">Apoio</a>
+                </div>
+                <!-- Menu Mobile Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-primary-blue hover:bg-gray-100 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+            <a href="#galeria" class="block py-3 px-4 text-primary-blue hover:bg-gray-50 transition duration-300 mobile-link">Galeria</a>
+            <a href="#detalhes" class="block py-3 px-4 text-primary-blue hover:bg-gray-50 transition duration-300 mobile-link">Detalhes</a>
+            <a href="#programacao" class="block py-3 px-4 text-primary-blue hover:bg-gray-50 transition duration-300 mobile-link">Programação</a>
+            <a href="#equipe" class="block py-3 px-4 text-primary-blue hover:bg-gray-50 transition duration-300 mobile-link">Equipe</a>
+            <a href="#apoio" class="block py-3 px-4 text-primary-blue hover:bg-gray-50 transition duration-300 mobile-link">Apoio</a>
+        </div>
+    </header>
+
+    <!-- SECTION: IMAGE SLIDER (NOVO DESTAQUE) -->
+    <section id="galeria" class="w-full bg-primary-blue relative h-[400px] md:h-[550px] overflow-hidden">
+        
+        <!-- SLIDER CONTAINER -->
+        <div class="relative w-full h-full">
+            <!-- Slides Wrapper (Responsável pelo movimento) -->
+            <div id="slider-wrapper" class="slider-wrapper h-full">
+                <!-- Slide 1 -->
+                <div class="slide bg-gray-900 flex justify-center items-center relative">
+                    <img src="https://www.assessoritec.com.br/wp-content/uploads/2023/03/PSICOPEDAGOGIA.png" alt="[Imagem de Psicopedagogia]" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
+                            3ª Psicopedagogia Popular
+                        </h1>
+                        <p class="text-lg sm:text-xl text-secondary-teal font-medium drop-shadow-md">
+                            O Encontro Transformador em Granja-CE
+                        </p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide bg-gray-900 flex justify-center items-center relative">
+                    <img src="https://i.ytimg.com/vi/-fVLQxkxV0U/maxresdefault.jpg" alt="[Imagem da Mesa Redonda do Evento]" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+                            Networking Ativo e Conteúdo Aprovado
+                        </h2>
+                        <p class="text-md sm:text-lg text-secondary-teal mt-2 drop-shadow-md">
+                            Não perca o maior evento de 2025 na região!
+                        </p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide bg-gray-900 flex justify-center items-center relative">
+                    <img src="https://www.assessoritec.com.br/wp-content/uploads/2023/03/PSICOPEDAGOGIA.png" alt="[Imagem de Psicopedagogia]" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+                            Encerramento: 15 de Novembro
+                        </h2>
+                        <p class="text-md sm:text-lg text-secondary-teal mt-2 drop-shadow-md">
+                            Av. Beira Rio, Granja, Ceará - 18:00h
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão Anterior -->
+            <button id="prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-30 p-3 rounded-full hover:bg-opacity-70 transition z-10 focus:outline-none">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <!-- Botão Próximo -->
+            <button id="next-btn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-30 p-3 rounded-full hover:bg-opacity-70 transition z-10 focus:outline-none">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+
+            <!-- Indicadores (Bolinhas) -->
+            <div id="slider-indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+                <!-- Bolinhas serão geradas via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: COUNTDOWN TIMER & MAIN CALL TO ACTION -->
+    <section id="countdown-cta" class="bg-primary-blue text-white py-12">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">
+                Contagem Regressiva para o Grande Encerramento
+            </h2>
+
+            <!-- Display do Timer -->
+            <div id="timer-display" class="flex justify-center space-x-4 md:space-x-8 text-center" aria-live="polite">
+                <!-- Componente de Tempo -->
+                <div class="bg-secondary-teal p-3 md:p-5 rounded-lg shadow-lg">
+                    <div id="days" class="text-3xl md:text-5xl font-extrabold">00</div>
+                    <div class="text-xs md:text-sm mt-1">DIAS</div>
+                </div>
+                <div class="bg-secondary-teal p-3 md:p-5 rounded-lg shadow-lg">
+                    <div id="hours" class="text-3xl md:text-5xl font-extrabold">00</div>
+                    <div class="text-xs md:text-sm mt-1">HORAS</div>
+                </div>
+                <div class="bg-secondary-teal p-3 md:p-5 rounded-lg shadow-lg">
+                    <div id="minutes" class="text-3xl md:text-5xl font-extrabold">00</div>
+                    <div class="text-xs md:text-sm mt-1">MINUTOS</div>
+                </div>
+                <div class="bg-secondary-teal p-3 md:p-5 rounded-lg shadow-lg">
+                    <div id="seconds" class="text-3xl md:text-5xl font-extrabold">00</div>
+                    <div class="text-xs md:text-sm mt-1">SEGUNDOS</div>
+                </div>
+            </div>
+
+            <!-- Mensagem de Evento Terminado (Oculta por padrão) -->
+            <div id="event-message" class="hidden text-3xl font-bold mt-6 text-secondary-teal">
+                O evento já aconteceu! Fique ligado na próxima edição.
+            </div>
+
+            <!-- Botão de Ação (Ajustado para linkar os detalhes, já que o formulário foi removido) -->
+            <a href="#detalhes" class="inline-block mt-8 px-8 py-3 bg-secondary-teal text-primary-blue text-lg font-bold rounded-lg shadow-xl hover:bg-white transform hover:scale-105 transition duration-300">
+                Ver Detalhes do Encerramento
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION: EVENT DETAILS (Detalhes do Evento) -->
+    <section id="detalhes" class="py-16 md:py-24 bg-bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold text-primary-blue mb-12">
+                Detalhes do Grande Encerramento
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Data e Horário -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl text-secondary-teal mb-3">🗓️</div>
+                    <h3 class="text-xl font-bold text-primary-blue mb-2">Data e Horário</h3>
+                    <p class="text-gray-600">Sexta-feira, 15 de Novembro de 2025</p>
+                    <p class="text-lg font-semibold text-primary-blue">18:00h às 21:00h</p>
+                </div>
+
+                <!-- Card 2: Localização -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl text-secondary-teal mb-3">📍</div>
+                    <h3 class="text-xl font-bold text-primary-blue mb-2">Local</h3>
+                    <p class="text-gray-600">Av. Beira Rio (Próximo à Pousada),</p>
+                    <p class="text-lg font-semibold text-primary-blue">Granja, Ceará - CE</p>
+                </div>
+
+                <!-- Card 3: Formato e Oferta -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-4xl text-secondary-teal mb-3">🎓</div>
+                    <h3 class="text-xl font-bold text-primary-blue mb-2">Como participar?</h3>
+                    <p class="text-gray-600">Participação 100% gratuita</p>
+                    <p class="text-lg font-semibold text-primary-blue">Esteja e graranta seu atendimento!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVENT PROGRAM (Programação da Semana) -->
+    <section id="programacao" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-primary-blue mb-12">
+                Programação toda especial.
+            </h2>
+            
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Linha do Tempo -->
+                <div class="absolute hidden md:block w-1 bg-secondary-teal left-1/2 transform -translate-x-1/2 h-full"></div>
+
+                <!-- Item 1: Online Meeting -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12 hidden md:block"></div>
+                    <div class="z-10 flex items-center order-1 bg-secondary-teal shadow-xl w-6 h-6 rounded-full">
+                        <h1 class="mx-auto font-semibold text-sm text-primary-blue">12</h1>
+                    </div>
+                    <div class="order-1 md:w-5/12 py-4 px-6 rounded-lg shadow-xl card-hover bg-bg-light md:bg-white w-full">
+                        <h3 class="mb-3 font-bold text-primary-blue text-lg">12/11: Lançamento do evento 3ª Psicopedagogo Popular</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600">Formato Online (Live ou Reunião) - 19:00h. Tema a ser revelado.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Social Media Blitz -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-5/12 hidden md:block"></div>
+                    <div class="z-10 flex items-center order-1 bg-secondary-teal shadow-xl w-6 h-6 rounded-full">
+                        <h1 class="mx-auto font-semibold text-sm text-primary-blue">13</h1>
+                    </div>
+                    <div class="order-1 md:w-5/12 py-4 px-6 rounded-lg shadow-xl card-hover bg-bg-light md:bg-white w-full">
+                        <h3 class="mb-3 font-bold text-primary-blue text-lg">13/11: Blitz Online nas Redes Sociais</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600">Acompanhe nosso Time de Urgência nas redes. Dicas e interações o dia todo.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Radio Interview -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12 hidden md:block"></div>
+                    <div class="z-10 flex items-center order-1 bg-secondary-teal shadow-xl w-6 h-6 rounded-full">
+                        <h1 class="mx-auto font-semibold text-sm text-primary-blue">14</h1>
+                    </div>
+                    <div class="order-1 md:w-5/12 py-4 px-6 rounded-lg shadow-xl card-hover bg-bg-light md:bg-white w-full">
+                        <h3 class="mb-3 font-bold text-primary-blue text-lg">14/11: Entrevista na Rádio</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600">Participação no Programa "Vozes da Macaboqueira" às 10:00h.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4: Main Event -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-5/12 hidden md:block"></div>
+                    <div class="z-10 flex items-center order-1 bg-secondary-teal shadow-xl w-6 h-6 rounded-full">
+                        <h1 class="mx-auto font-semibold text-sm text-primary-blue">15</h1>
+                    </div>
+                    <div class="order-1 md:w-5/12 py-4 px-6 rounded-lg shadow-xl card-hover bg-bg-light md:bg-white w-full">
+                        <h3 class="mb-3 font-bold text-primary-blue text-lg">15/11: 3ª Psicopedagogia Popular</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600">Av. Beira Rio (18:00h - 21:00h). Teremos atendimentos gratuitos pelas melhores profissionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TEAM/ORGANIZER (Idealização e Organização) -->
+    <section id="equipe" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold text-primary-blue mb-12">
+                Idealização e Organização
+            </h2>
+            
+            <div class="p-6 bg-bg-light rounded-xl shadow-2xl inline-block max-w-sm card-hover">
+                <img class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-secondary-teal" 
+                     src="https://placehold.co/128x128/2dd4bf/1e3a8a?text=Lidimar" 
+                     alt="Foto de Lidimar Rodrigues, Psicopedagoga e Idealizadora">
+                <h3 class="mt-4 text-2xl font-bold text-primary-blue">Lidimar Rodrigues</h3>
+                <p class="text-secondary-teal text-lg font-medium">Psicopedagoga e Idealizadora</p>
+                <p class="mt-3 text-gray-600">
+                    Lidimar é a mente por trás da Psicopedagogia Popular, dedicando-se a levar conhecimento acessível e de impacto para a comunidade de Granja e região.
+                </p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <!-- Placeholder para links sociais -->
+                    <a href="#" target="_blank" class="text-gray-500 hover:text-secondary-teal transition" aria-label="Link para o Facebook de Lidimar">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.165 6.839 9.479.5.092.682-.217.682-.483 0-.237-.008-.884-.015-1.745-2.784.604-3.376-1.34-3.376-1.34-.455-1.157-1.11-1.464-1.11-1.464-.908-.621.069-.608.069-.608 1.002.07 1.53.966 1.53.966.892 1.53 2.341 1.085 2.91.829.091-.645.349-1.085.635-1.334-2.227-.253-4.555-1.114-4.555-4.943 0-1.088.39-1.98.986-2.677-.099-.253-.428-1.267.094-2.645 0 0 .806-.268 2.64.978 1.83-.509 3.8-.509 5.631 0 1.834-1.246 2.639-.978 2.639-.978.522 1.378.192 2.392.093 2.645.597.697.986 1.59.986 2.677 0 3.838-2.33 4.686-4.566 4.935.359.309.678.917.678 1.846 0 1.334-.013 2.41-.013 2.73 0 .267.177.579.687.482C19.14 20.17 22 16.42 22 12.017 22 6.484 17.523 2 12 2z"></path></svg>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-500 hover:text-secondary-teal transition" aria-label="Link para o Instagram de Lidimar">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1-4h-4v-2c0-1.03.626-1.76 1.626-1.76h2.374V3H17c-2.138 0-3.5 1.5-3.5 3.5v1.5H10v4H7z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SUPPORT TEAM (Equipe de Apoio e Colaboradores) -->
+    <section id="apoio" class="py-16 md:py-24 bg-bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold text-primary-blue mb-12">
+                Equipe de Apoio e Colaboradores
+            </h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Profissionais dedicados que estarão oferecendo **atendimentos gratuitos** durante o evento de encerramento em Granja.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-center">
+
+                <!-- Colaborador 1 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg card-hover flex flex-col items-center">
+                    <img class="w-24 h-24 rounded-full object-cover border-3 border-secondary-teal" 
+                         src="https://placehold.co/96x96/1e3a8a/2dd4bf?text=Apoio+1" 
+                         alt="Foto da Colaboradora 1">
+                    <h3 class="mt-3 text-lg font-bold text-primary-blue leading-tight">Nome da Psicopedagoga A</h3>
+                    <p class="text-xs text-secondary-teal mt-1 font-medium">Psicopedagoga Popular</p>
+                    <a href="#" target="_blank" class="mt-2 text-sm text-gray-500 hover:text-secondary-teal transition" aria-label="Instagram da Colaboradora 1">
+                        <svg class="w-5 h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.688 4.975 5.068.03.48.04 1.144.04 2.11 0 7.42-4.008 10.37-9.545 10.37-5.535 0-9.545-2.95-9.545-10.37 0-.966.01-1.63.04-2.11.205-3.38 1.723-4.92 4.975-5.068 1.266-.058 1.646-.07 4.85-.07zm0 2.12c-3.11 0-3.486.012-4.755.07-2.735.124-3.992 1.284-4.215 4.098-.03.35-.04.83-.04 1.61 0 4.294 2.378 6.417 6.945 6.417 4.567 0 6.945-2.123 6.945-6.417 0-.78-.01-1.26-.04-1.61-.223-2.814-1.48-3.974-4.215-4.098-1.269-.058-1.645-.07-4.755-.07zm-2.868 2.05a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zm5.736 0a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zM12 8.4a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2z"/></svg>
+                        @insta_apoio_a
+                    </a>
+                </div>
+
+                <!-- Colaborador 2 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg card-hover flex flex-col items-center">
+                    <img class="w-24 h-24 rounded-full object-cover border-3 border-secondary-teal" 
+                         src="https://placehold.co/96x96/1e3a8a/2dd4bf?text=Apoio+2" 
+                         alt="Foto da Colaboradora 2">
+                    <h3 class="mt-3 text-lg font-bold text-primary-blue leading-tight">Nome da Psicopedagoga B</h3>
+                    <p class="text-xs text-secondary-teal mt-1 font-medium">Especialista em Leitura</p>
+                    <a href="#" target="_blank" class="mt-2 text-sm text-gray-500 hover:text-secondary-teal transition" aria-label="Instagram da Colaboradora 2">
+                        <svg class="w-5 h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.688 4.975 5.068.03.48.04 1.144.04 2.11 0 7.42-4.008 10.37-9.545 10.37-5.535 0-9.545-2.95-9.545-10.37 0-.966.01-1.63.04-2.11.205-3.38 1.723-4.92 4.975-5.068 1.266-.058 1.646-.07 4.85-.07zm0 2.12c-3.11 0-3.486.012-4.755.07-2.735.124-3.992 1.284-4.215 4.098-.03.35-.04.83-.04 1.61 0 4.294 2.378 6.417 6.945 6.417 4.567 0 6.945-2.123 6.945-6.417 0-.78-.01-1.26-.04-1.61-.223-2.814-1.48-3.974-4.215-4.098-1.269-.058-1.645-.07-4.755-.07zm-2.868 2.05a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zm5.736 0a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zM12 8.4a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2z"/></svg>
+                        @insta_apoio_b
+                    </a>
+                </div>
+
+                <!-- Colaborador 3 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg card-hover flex flex-col items-center">
+                    <img class="w-24 h-24 rounded-full object-cover border-3 border-secondary-teal" 
+                         src="https://placehold.co/96x96/1e3a8a/2dd4bf?text=Apoio+3" 
+                         alt="Foto da Colaboradora 3">
+                    <h3 class="mt-3 text-lg font-bold text-primary-blue leading-tight">Nome do Psicopedagogo C</h3>
+                    <p class="text-xs text-secondary-teal mt-1 font-medium">Psicomotricidade</p>
+                    <a href="#" target="_blank" class="mt-2 text-sm text-gray-500 hover:text-secondary-teal transition" aria-label="Instagram do Colaborador 3">
+                        <svg class="w-5 h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.688 4.975 5.068.03.48.04 1.144.04 2.11 0 7.42-4.008 10.37-9.545 10.37-5.535 0-9.545-2.95-9.545-10.37 0-.966.01-1.63.04-2.11.205-3.38 1.723-4.92 4.975-5.068 1.266-.058 1.646-.07 4.85-.07zm0 2.12c-3.11 0-3.486.012-4.755.07-2.735.124-3.992 1.284-4.215 4.098-.03.35-.04.83-.04 1.61 0 4.294 2.378 6.417 6.945 6.417 4.567 0 6.945-2.123 6.945-6.417 0-.78-.01-1.26-.04-1.61-.223-2.814-1.48-3.974-4.215-4.098-1.269-.058-1.645-.07-4.755-.07zm-2.868 2.05a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zm5.736 0a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zM12 8.4a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2z"/></svg>
+                        @insta_apoio_c
+                    </a>
+                </div>
+
+                <!-- Colaborador 4 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg card-hover flex flex-col items-center">
+                    <img class="w-24 h-24 rounded-full object-cover border-3 border-secondary-teal" 
+                         src="https://placehold.co/96x96/1e3a8a/2dd4bf?text=Apoio+4" 
+                         alt="Foto da Colaboradora 4">
+                    <h3 class="mt-3 text-lg font-bold text-primary-blue leading-tight">Nome da Psicopedagoga D</h3>
+                    <p class="text-xs text-secondary-teal mt-1 font-medium">Apoio Educacional</p>
+                    <a href="#" target="_blank" class="mt-2 text-sm text-gray-500 hover:text-secondary-teal transition" aria-label="Instagram da Colaboradora 4">
+                        <svg class="w-5 h-5 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.77 1.688 4.975 5.068.03.48.04 1.144.04 2.11 0 7.42-4.008 10.37-9.545 10.37-5.535 0-9.545-2.95-9.545-10.37 0-.966.01-1.63.04-2.11.205-3.38 1.723-4.92 4.975-5.068 1.266-.058 1.646-.07 4.85-.07zm0 2.12c-3.11 0-3.486.012-4.755.07-2.735.124-3.992 1.284-4.215 4.098-.03.35-.04.83-.04 1.61 0 4.294 2.378 6.417 6.945 6.417 4.567 0 6.945-2.123 6.945-6.417 0-.78-.01-1.26-.04-1.61-.223-2.814-1.48-3.974-4.215-4.098-1.269-.058-1.645-.07-4.755-.07zm-2.868 2.05a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zm5.736 0a1.18 1.18 0 100 2.36 1.18 1.18 0 000-2.36zM12 8.4a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2z"/></svg>
+                        @insta_apoio_d
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FOOTER -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">
+                &copy; 2025 3ª Psicopedagogia Popular - Granja-CE. Todos os direitos reservados.
+            </p>
+            <p class="text-xs mt-2 text-gray-400">
+                Desenvolvido com propósito e dedicação.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SECTION: JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Lógica do Menu Mobile ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Fecha o menu móvel ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- 2. Lógica da Contagem Regressiva (Countdown) ---
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const timerDisplay = document.getElementById('timer-display');
+            const eventMessage = document.getElementById('event-message');
+
+            // Data final: 15 de Novembro de 2025, 18:00:00 (Fuso horário de Brasília/Granja-CE)
+            // Usamos UTC para garantir consistência, ajustando para -3 horas (BRT)
+            const eventDate = new Date("2025-11-15T18:00:00-03:00").getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                // Se a contagem terminar (ou a data já passou)
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    timerDisplay.classList.add('hidden');
+                    eventMessage.classList.remove('hidden');
+                    return;
+                }
+
+                // Cálculos de tempo para dias, horas, minutos e segundos
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Exibe os resultados nos elementos, garantindo dois dígitos
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            // Inicializa e atualiza a contagem a cada 1 segundo
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+
+
+            // --- 3. Lógica do Carrossel de Imagens ---
+            const sliderWrapper = document.getElementById('slider-wrapper');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicatorsContainer = document.getElementById('slider-indicators');
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            
+            // Geração dos Indicadores (Bolinhas)
+            function createIndicators() {
+                for (let i = 0; i < totalSlides; i++) {
+                    const indicator = document.createElement('button');
+                    indicator.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors', 'duration-300', 'focus:outline-none', 'mx-1');
+                    indicator.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+                    indicator.addEventListener('click', () => {
+                        moveToSlide(i);
+                    });
+                    indicatorsContainer.appendChild(indicator);
+                }
+            }
+
+            // Função para atualizar a visualização e os indicadores
+            function updateCarousel() {
+                // Calcula o deslocamento em pixels. offsetWidth é a largura do slider container (100% da tela)
+                const offset = -currentSlide * sliderWrapper.offsetWidth / totalSlides; 
+                sliderWrapper.style.transform = `translateX(${offset}px)`;
+                updateIndicators();
+            }
+
+            // Função para mover o slide
+            function moveToSlide(index) {
+                if (index >= totalSlides) {
+                    currentSlide = 0; // Volta para o início (loop)
+                } else if (index < 0) {
+                    currentSlide = totalSlides - 1; // Volta para o fim (loop)
+                } else {
+                    currentSlide = index;
+                }
+                updateCarousel();
+            }
+            
+            // Atualiza o estilo das bolinhas
+            function updateIndicators() {
+                Array.from(indicatorsContainer.children).forEach((indicator, index) => {
+                    indicator.classList.remove('bg-secondary-teal');
+                    indicator.classList.add('bg-gray-400', 'hover:bg-gray-200');
+                    if (index === currentSlide) {
+                        indicator.classList.add('bg-secondary-teal', 'bg-opacity-90');
+                        indicator.classList.remove('bg-gray-400', 'hover:bg-gray-200');
+                    } else {
+                        // Garante que bolinhas inativas sejam brancas/transparentes contra o fundo escuro do carrossel
+                        indicator.classList.add('bg-white', 'bg-opacity-50'); 
+                    }
+                });
+            }
+
+            // Navegação para a frente
+            nextBtn.addEventListener('click', () => {
+                moveToSlide(currentSlide + 1);
+            });
+
+            // Navegação para trás
+            prevBtn.addEventListener('click', () => {
+                moveToSlide(currentSlide - 1);
+            });
+            
+            // Inicia o carrossel (cria bolinhas e posiciona no slide 0)
+            createIndicators();
+
+            // Configura o evento para redimensionamento da janela
+            window.addEventListener('resize', updateCarousel);
+            
+            // Garante que o carrossel inicie corretamente após o carregamento da página
+            // O pequeno atraso ajuda o navegador a calcular o offsetWidth corretamente antes da primeira animação
+            setTimeout(updateCarousel, 100); 
+
+            // Auto-play (opcional: descomentar para ativar o deslizamento automático a cada 5 segundos)
+            // setInterval(() => {
+            //     moveToSlide(currentSlide + 1);
+            // }, 5000); 
+
+        });
+    </script>
+</body>
+</html>
