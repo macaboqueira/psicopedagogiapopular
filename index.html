@@ -281,6 +281,153 @@
         </div>
     </section>
 
+<!-- SECTION: GALERIA (GALERIA DE FOTOS DO EVENTO) -->
+<center><iframe 
+  style="width:100%; max-width:900px; height:600px; border:0; border-radius:12px; overflow:hidden;" 
+  srcdoc='
+<style>
+  body {
+    font-family: Inter;
+    background: transparent;
+   color:#1e3a8a;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .gallery img {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform .3s;
+  }
+  .gallery img:hover { transform: scale(1.05); }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter .45s, background .45s, opacity .45s;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  .modal.show {
+    display: flex;
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.85);
+  }
+
+  .modal img {
+    width: 80%;
+    max-width: 900px;
+    border-radius: 12px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity .45s, transform .45s;
+  }
+  .modal.show img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 34px;
+    color: white;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 44px;
+    color: white;
+    cursor: pointer;
+    background: rgba(0,0,0,0.25);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 50%;
+  }
+  .nav.prev { left: 20px; }
+  .nav.next { right: 20px; }
+</style>
+
+<h2 class="text-4xl font-extrabold text-primary-blue mb-12">Galeria de Fotos</h2>
+
+<div class="gallery">
+  <img src="https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma3.jpg" onclick="openModal(0)">
+  <img src="https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma4.jpg" onclick="openModal(1)">
+  <img src="https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma5.jpg" onclick="openModal(2)">
+  <img src="https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma6.jpg" onclick="openModal(3)">
+</div>
+
+<div class="modal" id="modal">
+  <button class="close" onclick="closeModal()">&times;</button>
+  <button class="nav prev" onclick="changeImg(-1)">&#10094;</button>
+  <img id="modalImg">
+  <button class="nav next" onclick="changeImg(1)">&#10095;</button>
+</div>
+
+<script>
+const imgs = [
+  "https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma3.jpg",
+  "https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma4.jpg",
+  "https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma5.jpg",
+  "https://raw.githubusercontent.com/macaboqueira/psicopedagogiapopular/refs/heads/main/turma6.jpg"
+];
+
+let index = 0;
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+
+function openModal(i){
+  index = i;
+  modal.style.display = "flex";
+  setTimeout(()=> modal.classList.add("show"), 20);
+  modalImg.src = imgs[i];
+}
+
+function closeModal(){
+  modal.classList.remove("show");
+  setTimeout(()=> modal.style.display = "none", 450);
+}
+
+function changeImg(step){
+  index = (index + step + imgs.length) % imgs.length;
+  modalImg.style.opacity = 0;
+  setTimeout(()=>{
+    modalImg.src = imgs[index];
+    modalImg.style.opacity = 1;
+  },150);
+}
+</script>
+
+'>
+</iframe></center>
+    
+
     <!-- SECTION: TEAM/ORGANIZER (Idealização e Organização) -->
     <section id="equipe" class="py-16 md:py-24 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
